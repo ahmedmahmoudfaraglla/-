@@ -2,129 +2,382 @@
 /* Global Colors */
 :root {
     --primary-color: #00674F;
+    --primary-dark: #013D34;
+    --primary-soft: #E5F3EF;
     --secondary-color: #DDCC9F;
+    --secondary-soft: #F7F0DD;
     --accent-color: #63A493;
-    --neutral-background: #EFEFEF;
+    --text-color: #17312D;
+    --muted-color: #64746F;
+    --neutral-background: #F6F7F4;
+    --surface-color: #FFFFFF;
+    --border-color: rgba(0, 103, 79, 0.12);
+    --shadow-soft: 0 20px 55px rgba(1, 61, 52, 0.12);
+    --shadow-card: 0 18px 35px rgba(23, 49, 45, 0.09);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--neutral-background);
-    color: #333;
-    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(99, 164, 147, 0.2), transparent 34rem),
+        linear-gradient(180deg, #FFFFFF 0%, var(--neutral-background) 42%, #FFFFFF 100%);
+    color: var(--text-color);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.7;
     margin: 0;
+    min-height: 100vh;
     padding: 0;
+}
+
+body::before {
+    background: linear-gradient(135deg, rgba(221, 204, 159, 0.38), rgba(99, 164, 147, 0.16));
+    border-radius: 999px;
+    content: "";
+    filter: blur(2px);
+    height: 24rem;
+    position: fixed;
+    right: -10rem;
+    top: 8rem;
+    width: 24rem;
+    z-index: -1;
 }
 
 /* Header */
 header {
-    background-color: var(--primary-color);
-    padding: 20px;
-    color: white;
+    background: rgba(255, 255, 255, 0.84);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 10px 35px rgba(1, 61, 52, 0.08);
+    color: var(--text-color);
+    padding: 18px clamp(20px, 5vw, 72px);
+    position: sticky;
     text-align: center;
+    top: 0;
+    z-index: 10;
+}
+
+header::before {
+    color: var(--primary-color);
+    content: "MSN";
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.32em;
+    margin-bottom: 12px;
+}
+
+@supports (backdrop-filter: blur(16px)) {
+    header {
+        backdrop-filter: blur(16px);
+    }
 }
 
 nav ul {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
     list-style: none;
+    margin: 0;
     padding: 0;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 20px;
+    display: inline-flex;
 }
 
 nav ul li a {
-    color: white;
+    border-radius: 999px;
+    color: var(--primary-dark);
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 10px 18px;
     text-decoration: none;
-    font-weight: bold;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+nav ul li a:hover,
+nav ul li a:focus-visible {
+    background-color: var(--primary-color);
+    color: white;
+    outline: none;
+    transform: translateY(-2px);
 }
 
 /* Hero Section */
 .hero {
-    background-color: var(--primary-color);
+    align-items: center;
+    background:
+        linear-gradient(135deg, rgba(1, 61, 52, 0.92), rgba(0, 103, 79, 0.88)),
+        radial-gradient(circle at 78% 20%, rgba(221, 204, 159, 0.42), transparent 22rem);
+    border-radius: 0 0 42px 42px;
     color: white;
-    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    min-height: 520px;
+    overflow: hidden;
+    padding: 96px clamp(22px, 6vw, 90px);
+    position: relative;
     text-align: center;
 }
 
+.hero::before,
+.hero::after {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    content: "";
+    position: absolute;
+}
+
+.hero::before {
+    height: 22rem;
+    left: -7rem;
+    top: -9rem;
+    width: 22rem;
+}
+
+.hero::after {
+    background: rgba(255, 255, 255, 0.08);
+    bottom: -9rem;
+    height: 28rem;
+    right: -8rem;
+    width: 28rem;
+}
+
+.hero-text {
+    max-width: 820px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text::before {
+    background: rgba(221, 204, 159, 0.18);
+    border: 1px solid rgba(221, 204, 159, 0.32);
+    border-radius: 999px;
+    color: var(--secondary-color);
+    content: "Healthcare Innovation";
+    display: inline-flex;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    margin-bottom: 24px;
+    padding: 9px 18px;
+    text-transform: uppercase;
+}
+
 .hero h1 {
-    font-size: 36px;
+    font-size: clamp(2.5rem, 6vw, 5.4rem);
+    letter-spacing: -0.06em;
+    line-height: 0.96;
+    margin: 0 auto 26px;
+    max-width: 900px;
 }
 
 .hero p {
-    font-size: 18px;
+    color: rgba(255, 255, 255, 0.84);
+    font-size: clamp(1rem, 2.2vw, 1.35rem);
+    margin: 0 auto;
+    max-width: 680px;
+}
+
+section {
+    padding: 86px clamp(22px, 6vw, 90px);
+}
+
+.section-title h2 {
+    color: var(--primary-dark);
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    letter-spacing: -0.045em;
+    line-height: 1.08;
+    margin: 0 auto 18px;
+    max-width: 820px;
+    text-align: center;
+}
+
+.section-title h2::after {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 999px;
+    content: "";
+    display: block;
+    height: 4px;
+    margin: 18px auto 0;
+    width: 72px;
 }
 
 /* Mission & Vision */
 .mission-vision {
-    background-color: var(--secondary-color);
-    padding: 40px;
+    background:
+        linear-gradient(135deg, rgba(247, 240, 221, 0.92), rgba(229, 243, 239, 0.88)),
+        var(--secondary-color);
     text-align: center;
 }
 
-.mission-vision .section-title h2 {
-    font-size: 28px;
-}
-
 .mission-content {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
+    display: grid;
+    gap: 26px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 38px auto 0;
+    max-width: 1100px;
 }
 
-.mission, .vision {
-    width: 45%;
+.mission,
+.vision,
+.about-content,
+.solution {
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid var(--border-color);
+    border-radius: 28px;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    position: relative;
 }
 
-.mission h3, .vision h3 {
-    font-size: 24px;
+.mission,
+.vision,
+.solution {
+    padding: 34px;
+}
+
+.mission::before,
+.vision::before,
+.solution::before,
+.about-content::before {
+    background: linear-gradient(180deg, var(--accent-color), var(--secondary-color));
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 5px;
+}
+
+.mission h3,
+.vision h3 {
+    color: var(--primary-color);
+    font-size: 1.45rem;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+}
+
+.mission p,
+.vision p,
+.about p,
+.solution p {
+    color: var(--muted-color);
+    margin: 0;
 }
 
 /* About Section */
 .about {
-    padding: 40px;
     text-align: center;
 }
 
-.about .section-title h2 {
-    font-size: 28px;
+.about-content {
+    margin: 38px auto 0;
+    max-width: 860px;
+    padding: 44px clamp(28px, 5vw, 66px);
 }
 
 .about h3 {
-    font-size: 24px;
     color: var(--primary-color);
+    font-size: clamp(1.55rem, 3vw, 2.25rem);
+    letter-spacing: -0.035em;
+    margin: 0 0 16px;
 }
 
 /* Solutions Section */
 .solutions {
-    background-color: var(--neutral-background);
-    padding: 40px;
+    background:
+        linear-gradient(180deg, rgba(246, 247, 244, 0.64), rgba(255, 255, 255, 0.96)),
+        var(--neutral-background);
     text-align: center;
 }
 
-.solutions .section-title h2 {
-    font-size: 28px;
-}
-
 .solutions-content {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
+    display: grid;
+    gap: 26px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 38px auto 0;
+    max-width: 1100px;
 }
 
 .solution {
-    width: 45%;
+    min-height: 230px;
+    padding-top: 42px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.solution:hover {
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-6px);
 }
 
 .solution h3 {
-    font-size: 24px;
     color: var(--primary-color);
+    font-size: 1.45rem;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
 }
 
 /* Footer */
 footer {
-    background-color: var(--primary-color);
-    color: white;
+    background:
+        linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+    color: rgba(255, 255, 255, 0.82);
+    padding: 34px clamp(22px, 6vw, 90px);
     text-align: center;
-    padding: 20px 0;
+}
+
+.footer-content p {
+    margin: 0;
+}
+
+@media (max-width: 760px) {
+    header {
+        padding: 14px 16px;
+    }
+
+    header::before {
+        margin-bottom: 10px;
+    }
+
+    nav ul {
+        gap: 6px;
+    }
+
+    nav ul li a {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+    }
+
+    .hero {
+        border-radius: 0 0 28px 28px;
+        min-height: 480px;
+        padding: 74px 20px;
+    }
+
+    section {
+        padding: 64px 20px;
+    }
+
+    .mission-content,
+    .solutions-content {
+        grid-template-columns: 1fr;
+    }
+
+    .mission,
+    .vision,
+    .solution,
+    .about-content {
+        border-radius: 22px;
+        padding: 28px;
+    }
 }
