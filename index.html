@@ -1,79 +1,285 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthcare Website</title>
+    <meta name="description" content="Dev2Goo builds professional websites, hosting platforms, VPS servers, support plans, eCommerce stores, SEO systems, and digital growth services.">
+    <title>Dev2Goo | Professional Web, Hosting & Digital Support</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Our Solutions</a></li>
-                <li><a href="#">Contact</a></li>
+    <header class="site-header">
+        <nav class="nav container" aria-label="Main navigation">
+            <a class="brand" href="index.html" aria-label="Dev2Goo home">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 64 64" role="img">
+                        <path class="brace" d="M22 8h-5c-5 0-8 3-8 8v7c0 4-2 6-6 6v6c4 0 6 2 6 6v7c0 5 3 8 8 8h5v-8h-4c-2 0-3-1-3-3v-8c0-4-2-7-5-9 3-2 5-5 5-9v-8c0-2 1-3 3-3h4V8Z"/>
+                        <path class="brace" d="M42 8h5c5 0 8 3 8 8v7c0 4 2 6 6 6v6c-4 0-6 2-6 6v7c0 5-3 8-8 8h-5v-8h4c2 0 3-1 3-3v-8c0-4 2-7 5-9-3-2-5-5-5-9v-8c0-2-1-3-3-3h-4V8Z"/>
+                        <path class="two" d="M24 51v-8c0-5 3-8 8-8h7c2 0 3-1 3-3s-1-3-3-3H25v-8h15c7 0 11 4 11 11s-4 11-11 11h-7c-1 0-2 1-2 2v6h20v8H24Z"/>
+                        <circle class="dot orange" cx="27" cy="20" r="3"/>
+                        <circle class="dot blue" cx="36" cy="20" r="3"/>
+                        <rect class="pixel" x="32" y="5" width="8" height="8" rx="1"/>
+                    </svg>
+                </span>
+                <span class="brand-text">
+                    <strong>dev<span>2</span>goo</strong>
+                    <small>masters code</small>
+                </span>
+            </a>
+            <ul class="nav-links">
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="hosting.html">Hosting & VPS</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a class="nav-cta" href="contact.html">Start a project</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Empowering Healthcare Through Innovation</h1>
-            <p>Advancing diagnostics, telemedicine, and AI-driven platforms across the MENA region and beyond.</p>
-        </div>
-    </section>
-
-    <section class="mission-vision">
-        <div class="section-title">
-            <h2>Our Mission & Vision</h2>
-        </div>
-        <div class="mission-content">
-            <div class="mission">
-                <h3>Our Mission</h3>
-                <p>Improving healthcare with advanced technologies.</p>
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow">Smart digital solutions is our game.</p>
+                    <h1>Websites, servers, and support built for businesses that want to grow.</h1>
+                    <p class="hero-lead">Dev2Goo is a full digital partner for professional websites, hosting, VPS servers, eCommerce, SEO, marketing, and managed support.</p>
+                    <div class="hero-actions">
+                        <a class="button primary" href="contact.html">Request consultation</a>
+                        <a class="button secondary" href="services.html">Explore services</a>
+                    </div>
+                    <div class="trust-row" aria-label="Core strengths">
+                        <span>Web Development</span>
+                        <span>Managed Hosting</span>
+                        <span>Website Support</span>
+                        <span>Digital Growth</span>
+                    </div>
+                </div>
+                <div class="hero-panel" aria-label="Dev2Goo service dashboard">
+                    <div class="panel-header">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="code-card">
+                        <p class="code-line"><span>deploy</span> conversion-ready website</p>
+                        <p class="code-line"><span>secure</span> VPS + hosting stack</p>
+                        <p class="code-line"><span>support</span> updates, backups, fixes</p>
+                        <p class="code-line"><span>grow</span> SEO + social campaigns</p>
+                    </div>
+                    <div class="metric-card">
+                        <strong>360°</strong>
+                        <span>Digital services partner</span>
+                    </div>
+                    <div class="floating-card">
+                        <strong>Business is digitally ready</strong>
+                        <span>Build, host, monitor, optimize, and support from one expert team.</span>
+                    </div>
+                </div>
             </div>
-            <div class="vision">
-                <h3>Our Vision</h3>
-                <p>Leading the future of medical diagnostics in the MENA region.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="about">
-        <div class="section-title">
-            <h2>About Us</h2>
-        </div>
-        <div class="about-content">
-            <h3>45 Years of Experience</h3>
-            <p>We provide state-of-the-art diagnostic services and AI-powered tools to enhance healthcare accessibility and precision.</p>
-        </div>
-    </section>
-
-    <section class="solutions">
-        <div class="section-title">
-            <h2>Our Solutions</h2>
-        </div>
-        <div class="solutions-content">
-            <div class="solution">
-                <h3>AI & Digital Intelligence</h3>
-                <p>Advanced diagnostic tools powered by AI to improve healthcare delivery.</p>
+        <section class="section intro">
+            <div class="container split">
+                <div>
+                    <p class="eyebrow">We are dev2goo</p>
+                    <h2>An integrated digital solutions provider.</h2>
+                </div>
+                <p>Welcome to Dev2Goo, your go-to solution for web development, mobile-ready experiences, eCommerce, IT consulting, hosting services, VPS management, website support, and marketing production.</p>
             </div>
-            <div class="solution">
-                <h3>Clinical Trials & Research</h3>
-                <p>Our AI-based tools assist in clinical trials, enhancing medical research.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 MSN Medical Service Network</p>
+        <section class="section services">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">What we do</p>
+                    <h2>World-class services for every stage of your digital business.</h2>
+                    <p>From the first interface to the server behind it, Dev2Goo handles the full lifecycle.</p>
+                </div>
+                <div class="service-grid">
+                    <article class="service-card">
+                        <span class="service-icon">01</span>
+                        <h3>Web Development</h3>
+                        <p>Modern websites, landing pages, portals, dashboards, and custom web platforms.</p>
+                        <a href="services.html">View services</a>
+                    </article>
+                    <article class="service-card featured">
+                        <span class="service-icon">02</span>
+                        <h3>Website Support</h3>
+                        <p>Maintenance, security updates, content edits, backups, fixes, and technical care.</p>
+                        <a href="support.html">Support plans</a>
+                    </article>
+                    <article class="service-card">
+                        <span class="service-icon">03</span>
+                        <h3>Hosting & VPS</h3>
+                        <p>Fast hosting, VPS setup, server hardening, migration, email, SSL, DNS, and monitoring.</p>
+                        <a href="hosting.html">Hosting options</a>
+                    </article>
+                    <article class="service-card">
+                        <span class="service-icon">04</span>
+                        <h3>eCommerce</h3>
+                        <p>Stores, payment integrations, catalog management, checkout flows, and analytics.</p>
+                        <a href="services.html#ecommerce">Build a store</a>
+                    </article>
+                    <article class="service-card">
+                        <span class="service-icon">05</span>
+                        <h3>UI/UX Design</h3>
+                        <p>Clean design systems, user journeys, wireframes, and premium visual experiences.</p>
+                        <a href="services.html#design">Design details</a>
+                    </article>
+                    <article class="service-card">
+                        <span class="service-icon">06</span>
+                        <h3>SEO & Marketing</h3>
+                        <p>Technical SEO, speed optimization, social campaigns, and content foundations.</p>
+                        <a href="services.html#growth">Grow online</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section dark-feature">
+            <div class="container feature-grid">
+                <div>
+                    <p class="eyebrow">Built around your business</p>
+                    <h2>Launch fast, run safely, and keep improving.</h2>
+                    <p>We design the website, configure the hosting, secure the server, connect analytics, and stay beside you with practical support.</p>
+                </div>
+                <div class="stack-list">
+                    <article>
+                        <span>Strategy</span>
+                        <strong>Business-ready structure</strong>
+                        <p>Clear pages, service funnels, calls to action, and conversion paths.</p>
+                    </article>
+                    <article>
+                        <span>Infrastructure</span>
+                        <strong>Stable hosting stack</strong>
+                        <p>SSL, DNS, email, backups, uptime checks, security, and speed foundations.</p>
+                    </article>
+                    <article>
+                        <span>Care</span>
+                        <strong>Managed website support</strong>
+                        <p>Ongoing improvements, updates, issue handling, and monthly technical help.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats" aria-label="Dev2Goo achievements">
+            <div class="container stats-grid">
+                <div>
+                    <strong>120+</strong>
+                    <span>Completed Projects</span>
+                </div>
+                <div>
+                    <strong>95+</strong>
+                    <span>Satisfied Clients</span>
+                </div>
+                <div>
+                    <strong>12+</strong>
+                    <span>Team Members</span>
+                </div>
+                <div>
+                    <strong>180+</strong>
+                    <span>Hosted Sites</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section process">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">How we work</p>
+                    <h2>A clear process from idea to launch and support.</h2>
+                </div>
+                <div class="process-grid">
+                    <article>
+                        <span>01</span>
+                        <h3>Discover</h3>
+                        <p>We map your goals, audience, current website, content, hosting needs, and project priorities.</p>
+                    </article>
+                    <article>
+                        <span>02</span>
+                        <h3>Design</h3>
+                        <p>We create modern interfaces, user journeys, and page structures that match your brand.</p>
+                    </article>
+                    <article>
+                        <span>03</span>
+                        <h3>Develop</h3>
+                        <p>We build responsive, fast, SEO-ready pages and connect the systems your business needs.</p>
+                    </article>
+                    <article>
+                        <span>04</span>
+                        <h3>Operate</h3>
+                        <p>We launch, monitor, maintain, and continuously improve the website and infrastructure.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section testimonials">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Client voices</p>
+                    <h2>Trusted by teams that value quality and support.</h2>
+                </div>
+                <div class="testimonial-grid">
+                    <figure>
+                        <blockquote>"Working with Dev2Goo was excellent on every level. The design quality, code quality, and support made the project easy to manage."</blockquote>
+                        <figcaption>
+                            <strong>Amira Mandour</strong>
+                            <span>Assistant Manager</span>
+                        </figcaption>
+                    </figure>
+                    <figure>
+                        <blockquote>"Great team and one of the best I have worked with in a while. Full-featured delivery and strong support for every detail."</blockquote>
+                        <figcaption>
+                            <strong>Ahmed Kamal</strong>
+                            <span>CEO</span>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-band">
+            <div class="container contact-band-grid">
+                <div>
+                    <p class="eyebrow">Your business is digitally ready</p>
+                    <h2>Need a website, hosting, or reliable support?</h2>
+                    <p>Tell us about your project and we will recommend the right solution.</p>
+                </div>
+                <a class="button primary" href="contact.html">Talk to Dev2Goo</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <a class="brand footer-brand" href="index.html" aria-label="Dev2Goo home">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 64 64" role="img">
+                        <path class="brace" d="M22 8h-5c-5 0-8 3-8 8v7c0 4-2 6-6 6v6c4 0 6 2 6 6v7c0 5 3 8 8 8h5v-8h-4c-2 0-3-1-3-3v-8c0-4-2-7-5-9 3-2 5-5 5-9v-8c0-2 1-3 3-3h4V8Z"/>
+                        <path class="brace" d="M42 8h5c5 0 8 3 8 8v7c0 4 2 6 6 6v6c-4 0-6 2-6 6v7c0 5-3 8-8 8h-5v-8h4c2 0 3-1 3-3v-8c0-4 2-7 5-9-3-2-5-5-5-9v-8c0-2-1-3-3-3h-4V8Z"/>
+                        <path class="two" d="M24 51v-8c0-5 3-8 8-8h7c2 0 3-1 3-3s-1-3-3-3H25v-8h15c7 0 11 4 11 11s-4 11-11 11h-7c-1 0-2 1-2 2v6h20v8H24Z"/>
+                        <circle class="dot orange" cx="27" cy="20" r="3"/>
+                        <circle class="dot blue" cx="36" cy="20" r="3"/>
+                        <rect class="pixel" x="32" y="5" width="8" height="8" rx="1"/>
+                    </svg>
+                </span>
+                <span class="brand-text">
+                    <strong>dev<span>2</span>goo</strong>
+                    <small>masters code</small>
+                </span>
+            </a>
+            <div class="footer-links">
+                <a href="services.html">Services</a>
+                <a href="hosting.html">Hosting</a>
+                <a href="support.html">Support</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p class="copyright">&copy; 2026 Dev2Goo. All rights reserved.</p>
         </div>
     </footer>
-
 </body>
 </html>
