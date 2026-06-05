@@ -1,21 +1,21 @@
 # Dev2Goo WordPress / Elementor Package
 
-This folder contains two installable WordPress packages:
+The recommended way is the **single self-contained plugin**. It carries the full
+design (header, footer, and all pages), works with **any active theme**, and the
+pages are editable in **Elementor**.
 
-1. `dev2goo-elementor` - a lightweight Elementor-ready WordPress theme.
-2. `dev2goo-demo-importer` - a demo importer plugin that creates the Elementor demo pages and menus.
+## Option A (Recommended): One plugin only
 
-## Installation
+1. (Optional but recommended) Install **Elementor** from **Plugins > Add New** so
+   you can edit pages visually. The site renders correctly even without it.
+2. Go to **Plugins > Add New > Upload Plugin**.
+3. Upload `dev2goo-site.zip`, install it, and **Activate**.
+4. Open the **Dev2Goo Site** menu in the WordPress admin sidebar.
+5. Fill in your business details (phone, email, address, button), then **Save details**.
+6. Click **Build / Import Dev2Goo Site**.
 
-1. In WordPress admin, go to **Plugins > Add New** and install **Elementor**.
-2. Go to **Appearance > Themes > Add New > Upload Theme**.
-3. Upload `dev2goo-elementor.zip`, install it, and activate it.
-4. Go to **Plugins > Add New > Upload Plugin**.
-5. Upload `dev2goo-demo-importer.zip`, install it, and activate it.
-6. Go to **Appearance > Dev2Goo Demo Import**.
-7. Click **Import Dev2Goo Demo**.
-
-The importer creates:
+This creates the following pages as **Elementor Canvas** pages with the Dev2Goo
+header and footer built in, and sets **Home** as the front page:
 
 - Home
 - Services
@@ -24,10 +24,27 @@ The importer creates:
 - About
 - Contact
 
-It also assigns the Home page as the front page and creates the main/footer menus.
+Because the design CSS is bundled inside the plugin and each page is a Canvas page,
+the look does **not** depend on the active theme. Re-running the build updates the
+same pages.
+
+## Option B (Optional): Lightweight theme
+
+`dev2goo-elementor` is a small optional theme that provides a matching header and
+footer at the theme level (for users who prefer the design to come from the theme
+instead of Canvas pages). It is **not required** when using Option A.
+
+## Files
+
+- `dev2goo-site/` - the all-in-one plugin (recommended).
+- `dev2goo-elementor/` - optional lightweight theme.
+- `dist/dev2goo-site.zip` - uploadable plugin (recommended).
+- `dist/dev2goo-elementor.zip` - uploadable optional theme.
+- `dist/dev2goo-wordpress-package.zip` - everything bundled together.
 
 ## Notes
 
-- Elementor should be installed and active before importing.
-- The pages are imported as Elementor-editable pages.
-- The theme includes the Dev2Goo brand header, footer, colors, and responsive styling.
+- The plugin works with any theme; the optional theme is only for theme-level header/footer.
+- All pages are Elementor-editable (HTML widget inside an Elementor Canvas page).
+- Even without Elementor active, pages still render because the markup is also stored
+  in the page content.

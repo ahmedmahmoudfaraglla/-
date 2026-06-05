@@ -29,10 +29,93 @@ function d2g_theme_setup() {
 }
 add_action( 'after_setup_theme', 'd2g_theme_setup' );
 
+function d2g_theme_defaults() {
+	return array(
+		'phone'          => '+20 01008616316',
+		'email'          => 'info@dev2goo.com',
+		'address'        => 'Road 18, Sarayat El Maadi, 5th Floor, Cairo, Egypt',
+		'cta_label'      => 'Start a project',
+		'cta_url'        => home_url( '/contact/' ),
+		'footer_summary' => 'Professional web development, hosting, website support, and digital growth services.',
+	);
+}
+
+function d2g_theme_option( $key ) {
+	$defaults = d2g_theme_defaults();
+	return get_theme_mod( 'd2g_' . $key, isset( $defaults[ $key ] ) ? $defaults[ $key ] : '' );
+}
+
 function d2g_enqueue_assets() {
 	wp_enqueue_style( 'dev2goo-elementor-style', get_stylesheet_uri(), array(), D2G_THEME_VERSION );
 }
 add_action( 'wp_enqueue_scripts', 'd2g_enqueue_assets' );
+
+function d2g_customize_register( $wp_customize ) {
+	$wp_customize->add_section(
+		'd2g_theme_options',
+		array(
+			'title'       => __( 'Dev2Goo Theme Options', 'dev2goo-elementor' ),
+			'description' => __( 'Control header CTA, footer text, and contact details used across the theme.', 'dev2goo-elementor' ),
+			'priority'    => 30,
+		)
+	);
+
+	$fields = array(
+		'phone'          => __( 'Phone', 'dev2goo-elementor' ),
+		'email'          => __( 'Email', 'dev2goo-elementor' ),
+		'address'        => __( 'Address', 'dev2goo-elementor' ),
+		'cta_label'      => __( 'Header CTA Label', 'dev2goo-elementor' ),
+		'cta_url'        => __( 'Header CTA URL', 'dev2goo-elementor' ),
+		'footer_summary' => __( 'Footer Summary', 'dev2goo-elementor' ),
+	);
+
+	foreach ( $fields as $key => $label ) {
+		$wp_customize->add_setting(
+			'd2g_' . $key,
+			array(
+				'default'           => d2g_theme_option( $key ),
+				'sanitize_callback' => 'cta_url' === $key ? 'esc_url_raw' : 'sanitize_text_field',
+			)
+		);
+
+		$wp_customize->add_control(
+			'd2g_' . $key,
+			array(
+				'label'   => $label,
+				'section' => 'd2g_theme_options',
+				'type'    => 'footer_summary' === $key || 'address' === $key ? 'textarea' : 'text',
+			)
+		);
+	}
+}
+add_action( 'customize_register', 'd2g_customize_register' );
+
+function d2g_admin_setup_notice() {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
+	$screen = get_current_screen();
+	if ( ! $screen || 'themes' !== $screen->base ) {
+		return;
+	}
+
+	$messages = array();
+	if ( ! class_exists( '\Elementor\Plugin' ) ) {
+		$messages[] = __( 'Install and activate Elementor to edit the Dev2Goo pages visually.', 'dev2goo-elementor' );
+	}
+
+	if ( ! class_exists( 'Dev2Goo_Site' ) ) {
+		$messages[] = __( 'Upload and activate the Dev2Goo Site plugin, then open the Dev2Goo Site menu and click Build / Import.', 'dev2goo-elementor' );
+	}
+
+	if ( empty( $messages ) ) {
+		return;
+	}
+
+	echo '<div class="notice notice-info"><p><strong>Dev2Goo setup:</strong> ' . esc_html( implode( ' ', $messages ) ) . '</p></div>';
+}
+add_action( 'admin_notices', 'd2g_admin_setup_notice' );
 
 function d2g_brand_markup() {
 	?>
@@ -57,17 +140,17 @@ function d2g_brand_markup() {
 
 function d2g_menu_fallback() {
 	$items = array(
-		'Home'          => home_url( '/' ),
-		'Services'      => home_url( '/services/' ),
-		'Hosting & VPS' => home_url( '/hosting/' ),
-		'Support'       => home_url( '/support/' ),
-		'About'         => home_url( '/about/' ),
-		'Start a project' => home_url( '/contact/' ),
+		'Home'             => home_url( '/' ),
+		'Services'         => home_url( '/services/' ),
+		'Hosting & VPS'    => home_url( '/hosting/' ),
+		'Support'          => home_url( '/support/' ),
+		'About'            => home_url( '/about/' ),
+		d2g_theme_option( 'cta_label' ) => d2g_theme_option( 'cta_url' ),
 	);
 
 	echo '<ul class="primary-menu">';
 	foreach ( $items as $label => $url ) {
-		$class = 'Start a project' === $label ? ' class="menu-cta"' : '';
+		$class = d2g_theme_option( 'cta_label' ) === $label ? ' class="menu-cta"' : '';
 		printf( '<li%1$s><a href="%2$s">%3$s</a></li>', $class, esc_url( $url ), esc_html( $label ) );
 	}
 	echo '</ul>';
