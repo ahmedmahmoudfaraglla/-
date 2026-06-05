@@ -1,21 +1,23 @@
 # Dev2Goo WordPress / Elementor Package
 
-The recommended way is the **single self-contained plugin**. It carries the full
-design (header, footer, and all pages), works with **any active theme**, and the
-pages are editable in **Elementor**.
+A complete premium-style package:
 
-## Option A (Recommended): One plugin only
+- **Theme** with Theme Options (Customizer) + a guided **Dev2Goo Setup** wizard.
+- **Required plugin**: Elementor (installed automatically from WordPress.org).
+- **Companion plugin** `dev2goo-site` (bundled inside the theme) that carries the
+  design CSS and the one-click **demo importer**.
 
-1. (Optional but recommended) Install **Elementor** from **Plugins > Add New** so
-   you can edit pages visually. The site renders correctly even without it.
-2. Go to **Plugins > Add New > Upload Plugin**.
-3. Upload `dev2goo-site.zip`, install it, and **Activate**.
-4. Open the **Dev2Goo Site** menu in the WordPress admin sidebar.
-5. Fill in your business details (phone, email, address, button), then **Save details**.
-6. Click **Build / Import Dev2Goo Site**.
+## Recommended flow (theme + guided import)
 
-This creates the following pages as **Elementor Canvas** pages with the Dev2Goo
-header and footer built in, and sets **Home** as the front page:
+1. Go to **Appearance > Themes > Add New > Upload Theme**.
+2. Upload `dev2goo-elementor.zip`, install it, and **Activate**.
+3. You are sent to **Appearance > Dev2Goo Setup** (or use the admin notice).
+4. **Step 1** — click *Install & Activate Elementor* (from WordPress.org).
+5. **Step 2** — click *Install & Activate Dev2Goo Site* (bundled with the theme).
+6. **Step 3** — click *Import Dev2Goo Demo*.
+
+The import creates these Elementor-editable pages, sets **Home** as the front page,
+and builds the primary/footer menus:
 
 - Home
 - Services
@@ -24,27 +26,30 @@ header and footer built in, and sets **Home** as the front page:
 - About
 - Contact
 
-Because the design CSS is bundled inside the plugin and each page is a Canvas page,
-the look does **not** depend on the active theme. Re-running the build updates the
-same pages.
+Edit logo, colors, and contact details under **Appearance > Customize > Dev2Goo
+Theme Options**, and edit every page visually in **Elementor**.
 
-## Option B (Optional): Lightweight theme
+## Alternative flow (plugin only, any theme)
 
-`dev2goo-elementor` is a small optional theme that provides a matching header and
-footer at the theme level (for users who prefer the design to come from the theme
-instead of Canvas pages). It is **not required** when using Option A.
+If you prefer not to change your theme, upload only `dev2goo-site.zip`
+(**Plugins > Add New > Upload Plugin**), activate it, open the **Dev2Goo Site**
+admin menu, fill in your details, and click **Build / Import**. The design works
+with any active theme because the pages use Elementor Canvas with the header and
+footer baked in.
 
 ## Files
 
-- `dev2goo-site/` - the all-in-one plugin (recommended).
-- `dev2goo-elementor/` - optional lightweight theme.
-- `dist/dev2goo-site.zip` - uploadable plugin (recommended).
-- `dist/dev2goo-elementor.zip` - uploadable optional theme.
-- `dist/dev2goo-wordpress-package.zip` - everything bundled together.
+- `dev2goo-elementor/` — theme (Theme Options, header/footer, setup wizard, bundles the plugin).
+- `dev2goo-site/` — companion plugin (design CSS + demo importer, Elementor canvas).
+- `dist/dev2goo-elementor.zip` — uploadable theme (recommended starting point).
+- `dist/dev2goo-site.zip` — uploadable companion plugin.
+- `dist/dev2goo-wordpress-package.zip` — both archives bundled together.
 
 ## Notes
 
-- The plugin works with any theme; the optional theme is only for theme-level header/footer.
-- All pages are Elementor-editable (HTML widget inside an Elementor Canvas page).
-- Even without Elementor active, pages still render because the markup is also stored
-  in the page content.
+- The theme bundles the companion plugin at `lib/dev2goo-site.zip` and installs it
+  for you during setup.
+- Automatic plugin installation uses the WordPress filesystem. On hosts that require
+  FTP credentials, use the manual upload fallback (the ZIPs in `dist/`).
+- Pages still render even if Elementor is deactivated, because the markup is also
+  stored in the page content.

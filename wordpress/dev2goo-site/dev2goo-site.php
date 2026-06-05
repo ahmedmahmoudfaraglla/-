@@ -197,6 +197,28 @@ final class Dev2Goo_Site {
 		}
 		check_admin_referer( self::NONCE );
 
+		$this->build_site();
+
+		wp_safe_redirect( add_query_arg( 'dev2goo_built', 'yes', admin_url( 'admin.php?page=' . self::MENU_SLUG ) ) );
+		exit;
+	}
+
+	/**
+	 * Public entry point so a theme (or any caller) can run the demo build.
+	 *
+	 * @return array Map of page slug => page ID.
+	 */
+	public static function run_build() {
+		$instance = new self();
+		return $instance->build_site();
+	}
+
+	/**
+	 * Build/refresh all pages, set the front page, and clear Elementor cache.
+	 *
+	 * @return array Map of page slug => page ID.
+	 */
+	public function build_site() {
 		$page_ids = array();
 		foreach ( $this->pages() as $slug => $page ) {
 			$page_ids[ $slug ] = $this->upsert_page( $slug, $page['title'], $this->full_page_html( $slug, $page['body'] ) );
@@ -211,8 +233,7 @@ final class Dev2Goo_Site {
 			\Elementor\Plugin::$instance->files_manager->clear_cache();
 		}
 
-		wp_safe_redirect( add_query_arg( 'dev2goo_built', 'yes', admin_url( 'admin.php?page=' . self::MENU_SLUG ) ) );
-		exit;
+		return $page_ids;
 	}
 
 	private function upsert_page( $slug, $title, $html ) {

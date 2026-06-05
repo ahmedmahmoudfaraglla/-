@@ -50,6 +50,11 @@ function d2g_enqueue_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'd2g_enqueue_assets' );
 
+$d2g_setup = get_template_directory() . '/inc/setup.php';
+if ( file_exists( $d2g_setup ) ) {
+	require_once $d2g_setup;
+}
+
 function d2g_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
 		'd2g_theme_options',
@@ -89,33 +94,6 @@ function d2g_customize_register( $wp_customize ) {
 	}
 }
 add_action( 'customize_register', 'd2g_customize_register' );
-
-function d2g_admin_setup_notice() {
-	if ( ! current_user_can( 'manage_options' ) ) {
-		return;
-	}
-
-	$screen = get_current_screen();
-	if ( ! $screen || 'themes' !== $screen->base ) {
-		return;
-	}
-
-	$messages = array();
-	if ( ! class_exists( '\Elementor\Plugin' ) ) {
-		$messages[] = __( 'Install and activate Elementor to edit the Dev2Goo pages visually.', 'dev2goo-elementor' );
-	}
-
-	if ( ! class_exists( 'Dev2Goo_Site' ) ) {
-		$messages[] = __( 'Upload and activate the Dev2Goo Site plugin, then open the Dev2Goo Site menu and click Build / Import.', 'dev2goo-elementor' );
-	}
-
-	if ( empty( $messages ) ) {
-		return;
-	}
-
-	echo '<div class="notice notice-info"><p><strong>Dev2Goo setup:</strong> ' . esc_html( implode( ' ', $messages ) ) . '</p></div>';
-}
-add_action( 'admin_notices', 'd2g_admin_setup_notice' );
 
 function d2g_brand_markup() {
 	?>
